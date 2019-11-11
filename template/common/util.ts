@@ -9,7 +9,7 @@ const ajax = (url: string, params : any = {}) => {
 }
 
 export default {
-    ajax(baseURL: string) {
+    request(baseURL: string) {
         return function(params: any) {
             let host = typeof baseURL === 'function' ? baseURL() : baseURL;
             params.opts = params.opts || {};
