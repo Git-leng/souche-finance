@@ -1,6 +1,6 @@
 /* eslint-disable */
 import Util from '../util';
-let domain = process.env.<%- $$.convertUrl(data.moduleName) || 'HOST' %>;
+let domain = process.env.<%- $$.convertUrl(data.project.domain) || 'HOST' %>;
 let instance = Util.request(domain || '');
 
 <% _.forEach(data.list, function(o){ %> /** <%- o.summary %> */
