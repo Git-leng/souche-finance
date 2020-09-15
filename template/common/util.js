@@ -2,17 +2,14 @@ import axios from 'axios';
 
 const instance = axios.create();
 
-function createAPI(baseURL) {
+function finance(baseURL) {
     return function (conf) {
-        conf = conf || {};
-        return instance(Object.assign({}, {
-            url: conf.url,
-            baseURL: baseURL,
-            method: conf.method
-        }, conf.opts));
+        let { url, method, opts } = conf || {};
+        let convertUrl = url.replace(/\{([\s\S]+?)\}/g, ($0, $1) => opts[$1] || '');
+        return instance[method](baseURL + convertUrl, method == 'get' ? { params: opts } : { ...opts });
     };
 }
 
-export {
-    createAPI
+export default {
+    finance
 };
