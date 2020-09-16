@@ -1,7 +1,7 @@
 /* eslint-disable */
 import Util from '../util';
 
-let domain = process.env.<%- data.project.domain || 'DOMAIN' %>;
+let domain = '<%- data.project.domain || '' %>';
 let instance = Util.finance(domain);
 
 <% _.forEach(data.list, function(o){ %> /** <%- o.summary %> */
